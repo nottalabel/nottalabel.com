@@ -1,10 +1,15 @@
-//import Image from "next/image";
+import Image from "next/image";
 
 export default function Home() {
     return (
-        <div className="flex items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-radio-canada)]">
-            <h1 className="text-3xl italic font-bold">nottalabel</h1>
-            <p>Coming soon...&trade;</p>
+        <div className="flex flex-col md:flex-row items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-radio-canada)]">
+            <Image 
+                src="/logo-white.svg"
+                alt="nottalabel"
+                width={256}
+                height={256}
+            />
+            <p className="flex">Coming soon...&trade;</p>
         </div>
     );
 }

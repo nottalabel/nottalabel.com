@@ -39,12 +39,12 @@ function Radio() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center font-[family-name:var(--font-radio-canada)]">
       <div className="flex flex-col items-center p-1">
         <div className="flex flex-col items-center">
             <ClientAnimation />
         </div>
-        <div className="scroll-container">
+        <div className="scroll-container flex flex-row">
           <p className="scrolling-text"> Currently Playing: {nowPlaying} </p>
         </div>
         <div className="flex flex-row m-auto">

@@ -4,9 +4,9 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 export default function Animation() {
-    const canvasRef = useRef(null);
-    const imgRef = useRef(null);
-    const [ ctx, setCtx ] = useState(null);
+    const canvasRef = useRef<HTMLCanvasElement|null>(null);
+    const imgRef = useRef<HTMLImageElement|null>(null);
+    const [ ctx, setCtx ] = useState<CanvasRenderingContext2D|null>(null);
 
     const flag = {
         x: 150 - 32, 
@@ -16,19 +16,17 @@ export default function Animation() {
     };
 
     useEffect(() => {
-        setCtx(canvasRef.current.getContext("2d"));
+        setCtx(canvasRef.current!.getContext("2d"));
     }, []);
 
     const animate = () => {
-        if (!ctx) return;
+        if (!ctx || !imgRef.current) return;
         ctx.fillStyle = "hsl(0deg 80 0)";
         ctx.fillRect(0, 0, 300, 300);
-        console.log("FLAG: ", flag);
         flag.x += flag.dx;
         flag.y += flag.dy;
         if (flag.x > 300 - flag.w || flag.x < 0) flag.dx *= -1;
         if (flag.y > 300 - flag.h || flag.y < 0) flag.dy *= -1;
-        ctx.fillStyle = flag.color;
         ctx.drawImage(imgRef.current, flag.x, flag.y, flag.w, flag.h);
         window.requestAnimationFrame(animate);
     }

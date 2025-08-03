@@ -1,6 +1,5 @@
 "use client"; 
-//import axios from "axios";
-//import { useCounter } from '@uidotdev/usehooks';
+import axios from "axios";
 import { useState, useRef, useEffect } from "react";
 import { CirclePlay, CircleStop, CirclePause } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -11,20 +10,16 @@ const ClientAnimation = dynamic(
 );
 
 function Radio() {
-  const ic_addr = `https://radio.nottalabel.com/`
+  const ic_addr = `https://radio.nottalabel.com`
   const [ playing, setPlaying ] = useState(false);
   const [ nowPlaying, setNowPlaying ] = useState("OFF AIR");
-  const audioElement = useRef(null);
+  const audioElement = useRef<HTMLAudioElement|null>(null);
 
   useEffect(() => {
     setNowPlaying("OFF AIR");
-  }, []);
-
-    // TODO: Come up with a way to handle fetching artist/title info
-  /* useCounter(() => {
-    (async () => {
+    const intervalId = setInterval(async() => {
       console.log("Contacting Icecast server...")
-      const data = await axios.get(`${ic_addr}status-json.xsl`).then(res => res.data);
+      const data = await axios.get(`${ic_addr}/status-json.xsl`).then(res => res.data);
       if (!data.icestats.source) { 
         if (audioElement.current) {
           audioElement.current.pause();
@@ -36,8 +31,9 @@ function Radio() {
       console.log("DATA: ", data);
       if (data.icestats.source.title !== nowPlaying)
         setNowPlaying(data.icestats.source.title);
-    })()
-  }, 15000); */
+    return () => clearInterval(intervalId);
+  }, 15000);
+  }, []);
 
   return (
     <div className="flex flex-col items-center">
@@ -49,7 +45,7 @@ function Radio() {
           <p className="scrolling-text"> Currently Playing: {nowPlaying} </p>
         </div>
         <div className="flex flex-row m-auto">
-          <audio ref={audioElement} src={`${ic_addr}stream`} />
+          <audio ref={audioElement} src={`${ic_addr}/stream`} />
           <button className="cursor-pointer" onClick={() => { 
             if (audioElement.current && nowPlaying !== "OFF AIR") {
               setPlaying(prev => !prev); 
@@ -61,8 +57,8 @@ function Radio() {
           <button className="cursor-pointer" onClick={() => { 
             if (audioElement.current)
               setPlaying(false); 
-              audioElement.current.pause();
-              audioElement.current.currentTime = 0;
+              audioElement.current!.pause();
+              audioElement.current!.currentTime = 0;
             }}>
             <CircleStop size={32}/>
           </button>

@@ -15,9 +15,7 @@ function Radio() {
   const [ nowPlaying, setNowPlaying ] = useState("OFF AIR");
   const audioElement = useRef<HTMLAudioElement|null>(null);
 
-  useEffect(() => {
-    setNowPlaying("OFF AIR");
-    const intervalId = setInterval(async() => {
+    const updateInfo = async() => {
       console.log("Contacting Icecast server...")
       const data = await axios.get(`${ic_addr}/status-json.xsl`).then(res => res.data);
       if (!data.icestats.source) { 
@@ -31,8 +29,13 @@ function Radio() {
       console.log("DATA: ", data);
       if (data.icestats.source.title !== nowPlaying)
         setNowPlaying(data.icestats.source.title);
+
+    }
+
+  useEffect(() => {
+    updateInfo();
+    const intervalId = setInterval(updateInfo, 15000);
     return () => clearInterval(intervalId);
-  }, 15000);
   }, []);
 
   return (

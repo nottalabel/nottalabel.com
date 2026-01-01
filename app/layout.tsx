@@ -3,6 +3,7 @@ import { Radio_Canada } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import ContentPreview from "./components/contentpreview";
 
 const radioCanada = Radio_Canada({
   variable: "--font-radio-canada",
@@ -37,6 +38,12 @@ export default function RootLayout({
             <div className="flex flex-row m-auto md:pl-8">
                 <Link className="m-auto p-2" href="/radio">Radio</Link>
                 <Link className="m-auto p-2" href="/about">About Us</Link>
+            </div>
+        </div>
+        <div className="flex">
+            <h1>Latest Releases</h1>
+            <div className="flex flex-row">
+                <ContentPreview /> 
             </div>
         </div>
         

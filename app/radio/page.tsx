@@ -1,7 +1,7 @@
 "use client"; 
 import axios from "axios";
 import { useState, useRef, useEffect } from "react";
-import { CirclePlay, CircleStop, CirclePause } from "lucide-react";
+import { CirclePlay, CircleStop, CirclePause, Volume2 } from "lucide-react";
 import dynamic from "next/dynamic";
 
 const ClientAnimation = dynamic(
@@ -12,6 +12,7 @@ const ClientAnimation = dynamic(
 function Radio() {
   const ic_addr = `https://radio.nottalabel.com`
   const [ playing, setPlaying ] = useState(false);
+  const [ volume, setVolume ] = useState(0.5);
   const [ nowPlaying, setNowPlaying ] = useState("OFF AIR");
   const audioElement = useRef<HTMLAudioElement|null>(null);
 
@@ -32,13 +33,17 @@ function Radio() {
 
     }
 
+    useEffect(() => {
+        if (!audioElement.current) return;
+        audioElement.current.volume = volume;
+    },[volume]);
+
   useEffect(() => {
     updateInfo();
     const intervalId = setInterval(updateInfo, 15000);
     return () => clearInterval(intervalId);
   }, []);
-
-  return (
+return (
     <div className="flex flex-col items-center font-[family-name:var(--font-radio-canada)]">
       <div className="flex flex-col items-center p-1">
         <div className="flex flex-col items-center">
@@ -66,6 +71,18 @@ function Radio() {
             <CircleStop size={32}/>
           </button>
         </div>
+        <div className="flex flex-row m-auto">
+          <Volume2 className="p-1" size={32} />
+          <input 
+            className="m-auto p-1 bg-[#ededed] accent-[#ededed]" 
+            type="range" 
+            id="volume"
+            min={0} 
+            max={1} 
+            step={0.1} 
+            onChange={(e) => setVolume(parseFloat(e.target.value))}
+          />
+          </div>
       </div>
     </div>
   );

@@ -40,9 +40,12 @@ export default function RootLayout({
                 <Link className="m-auto p-2" href="/about">About Us</Link>
             </div>
         </div>
-        <div className="flex">
-            <h1>Latest Releases</h1>
+        <div className="flex flex-col m-auto mt-4">
+            <h1 className="text-lg bold">Latest Releases</h1>
             <div className="flex flex-row">
+                <ContentPreview /> 
+                <ContentPreview /> 
+                <ContentPreview /> 
                 <ContentPreview /> 
             </div>
         </div>

@@ -10,7 +10,7 @@ const ClientAnimation = dynamic(
 );
 
 function Radio() {
-  const ic_addr = `https://radio.nottalabel.com`
+  const ic_addr = `http://radio.nottalabel.com`
   const [ playing, setPlaying ] = useState(false);
   const [ nowPlaying, setNowPlaying ] = useState("OFF AIR");
   const audioElement = useRef<HTMLAudioElement|null>(null);

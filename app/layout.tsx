@@ -36,6 +36,7 @@ export default function RootLayout({
             </Link>
             <div className="flex flex-row m-auto md:pl-8">
                 <Link className="m-auto p-2" href="/radio">Radio</Link>
+                <Link className="m-auto p-2" href="/store">Store</Link>
                 <Link className="m-auto p-2" href="/about">About Us</Link>
             </div>
         </div>

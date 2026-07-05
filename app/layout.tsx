@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Radio_Canada } from "next/font/google";
+import { Bluesky, Youtube, Instagram } from "./icons";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,6 +43,20 @@ export default function RootLayout({
         </div>
         
         {children}
+        <div className="m-auto mt-16 flex flex-col">
+            <div className="flex flex-row m-auto">
+                <a href="https://bsky.app/profile/nottalabel.com">
+                    <Bluesky className="m-auto" style={{ color: "#ededed" }} />
+                </a>
+                <a href="https://www.instagram.com/nottalabel">
+                    <Instagram className="m-auto" style={{ color: "#ededed" }} />
+                </a>
+                <a href="https://www.youtube.com/@nottalabel">
+                    <Youtube className="m-auto" style={{ color: "#ededed" }} />
+                </a>
+            </div>
+            <p>Copyright &copy; MMXXVI nottalabel</p>
+        </div>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useState, useRef, useEffect } from "react";
 import { CirclePlay, CircleStop, CirclePause } from "lucide-react";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 
 const ClientAnimation = dynamic(
@@ -41,7 +42,13 @@ function Radio() {
   return (
     <div className="flex flex-col items-center font-[family-name:var(--font-radio-canada)]">
       <div className="flex flex-col items-center p-1">
-        <div className="flex flex-col items-center">
+        <div className="m-auto mt-16 flex flex-col items-center">
+            <Image 
+                src="/pyrateradiologo.png" 
+                alt="Pyrate Radio logo" 
+                width={300} 
+                height={75}
+            />
             <ClientAnimation />
         </div>
         <div className="scroll-container flex flex-row">

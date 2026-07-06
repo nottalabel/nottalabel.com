@@ -46,13 +46,13 @@ export default function RootLayout({
         <div className="m-auto mt-16 flex flex-col">
             <div className="flex flex-row m-auto">
                 <a target="_blank" href="https://bsky.app/profile/nottalabel.com">
-                    <Bluesky className="m-auto" style={{ color: "#ededed" }} />
+                    <Bluesky className="m-auto" style={{ color: "#ededed" }} width="48" height="48" />
                 </a>
                 <a target="_blank" href="https://www.instagram.com/nottalabel">
-                    <Instagram className="m-auto" style={{ color: "#ededed" }} />
+                    <Instagram className="m-auto" style={{ color: "#ededed" }} width="48" height="48" />
                 </a>
                 <a target="_blank" href="https://www.youtube.com/@nottalabel">
-                    <Youtube className="m-auto" style={{ color: "#ededed" }} />
+                    <Youtube className="m-auto" style={{ color: "#ededed" }} width="48" height="48" />
                 </a>
             </div>
             <p>Copyright &copy; MMXXVI nottalabel</p>

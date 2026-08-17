@@ -42,16 +42,15 @@ function Radio() {
   return (
     <div className="flex flex-col items-center font-[family-name:var(--font-radio-canada)]">
       <div className="flex flex-col items-center p-1">
-        <div className="m-auto mt-16 flex flex-col items-center">
+        <div className="m-auto mt-32 flex flex-col items-center">
             <Image 
                 src="/pyrateradiologo.png" 
                 alt="Pyrate Radio logo" 
-                width={300} 
-                height={75}
+                width={400} 
+                height={400}
             />
-            <ClientAnimation />
         </div>
-        <div className="scroll-container flex flex-row">
+        <div className="scroll-container flex flex-row mt-32">
           <p className="scrolling-text"> Currently Playing: {nowPlaying} </p>
         </div>
         <div className="flex flex-row m-auto">

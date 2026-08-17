@@ -3,12 +3,12 @@ import axios from "axios";
 import { useState, useRef, useEffect } from "react";
 import { CirclePlay, CircleStop, CirclePause } from "lucide-react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
+//import dynamic from "next/dynamic";
 
-const ClientAnimation = dynamic(
+/*const ClientAnimation = dynamic(
     () => import("./animation"),
     { ssr: false }
-);
+);*/
 
 function Radio() {
   const ic_addr = `https://radio.nottalabel.com`

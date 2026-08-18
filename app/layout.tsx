@@ -26,7 +26,7 @@ export default function RootLayout({
       <body
         className={`${radioCanada.variable} antialiased flex flex-col items-center`}
       >
-        <div className="flex flex-col md:flex-row m-auto mt-4">
+        <div className="flex flex-col md:flex-row m-auto mt-8">
             <Link className="flex m-auto md:mr-64" href="/">
                 <Image 
                     src="/logo-white.svg"
